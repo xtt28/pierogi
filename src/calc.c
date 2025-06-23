@@ -13,6 +13,8 @@ const size_t min_args[OP_COUNT] = {
 	[OP_PI] = 0,
 	[OP_E] = 0,
 	[OP_POW] = 2,
+	[OP_SIN] = 1,
+	[OP_COS] = 1,
 };
 
 int operation_apply(stack *st, operation op)
@@ -63,6 +65,12 @@ int operation_apply(stack *st, operation op)
 		stack_push(st, pow(a, b));
 		return SUCCESS;
 	}
+	case OP_SIN:
+		stack_push(st, sin(stack_pop(st)));
+		return SUCCESS;
+	case OP_COS:
+		stack_push(st, cos(stack_pop(st)));
+		return SUCCESS;
 	default:
 		return ERR_UNRECOGNIZED_OP;
 	}

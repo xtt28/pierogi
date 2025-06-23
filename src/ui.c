@@ -16,6 +16,8 @@ operation sign_to_op(const char *sign)
 	if (strcmp(sign, "pi") == 0) return OP_PI;
 	if (strcmp(sign, "e") == 0) return OP_E;
 	if (strcmp(sign, "^") == 0) return OP_POW;
+	if (strcmp(sign, "sin") == 0) return OP_SIN;
+	if (strcmp(sign, "cos") == 0) return OP_COS;
 	return OP_COUNT;
 }
 
