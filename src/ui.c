@@ -13,6 +13,9 @@ operation sign_to_op(const char *sign)
 	if (strcmp(sign, "-") == 0) return OP_SUBTRACT;
 	if (strcmp(sign, "*") == 0) return OP_MULTIPLY;
 	if (strcmp(sign, "/") == 0) return OP_DIVIDE;
+	if (strcmp(sign, "pi") == 0) return OP_PI;
+	if (strcmp(sign, "e") == 0) return OP_E;
+	if (strcmp(sign, "^") == 0) return OP_POW;
 	return OP_COUNT;
 }
 
