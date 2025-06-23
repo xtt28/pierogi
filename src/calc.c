@@ -10,6 +10,10 @@ const size_t min_args[OP_COUNT] = {
 
 int operation_apply(stack *st, operation op)
 {
+	if (op >= OP_COUNT || op < 0)
+	{
+		return ERR_UNRECOGNIZED_OP;
+	}
 	if (st->len < min_args[op])
 	{
 		return ERR_STACK_INCOMPLETE;

@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "stack.h"
 
 void stack_expand(stack *st)
@@ -26,9 +28,20 @@ double stack_pop(stack *st)
 	return tmp;
 }
 
-double stack_peek(stack *st)
+double stack_peek(stack *st) { return st->values[st->len - 1]; }
+
+void stack_print(stack *st)
 {
-	return st->values[st->len - 1];
+	putchar('(');
+	for (size_t i = 0; i < st->len; ++i)
+	{
+		printf("%f", st->values[i]);
+		if (i != st->len - 1)
+		{
+			putchar(' ');
+		}
+	}
+	printf(")\n\n");
 }
 
 stack *stack_create(void)

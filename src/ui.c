@@ -13,7 +13,7 @@ operation sign_to_op(const char *sign)
 	if (strcmp(sign, "-") == 0) return OP_SUBTRACT;
 	if (strcmp(sign, "*") == 0) return OP_MULTIPLY;
 	if (strcmp(sign, "/") == 0) return OP_DIVIDE;
-	return -1;
+	return OP_COUNT;
 }
 
 int run()
@@ -41,6 +41,12 @@ int run()
 			puts("Bye bye.");
 			break;
 		}
+
+		if (strcmp(buffer, "show") == 0)
+		{
+			stack_print(st);
+			continue;
+		}
 		
 		double val = strtod(buffer, &endptr);
 		bool is_num = *endptr == '\0';
@@ -55,16 +61,16 @@ int run()
 			switch (res)
 			{
 			case SUCCESS:
-				printf("%f\n", stack_peek(st));
+				printf("%f\n\n", stack_peek(st));
 				break;
 			case ERR_STACK_INCOMPLETE:
-				puts("Not enough values in stack");
+				puts("Not enough values in stack\n");
 				break;
 			case ERR_DIV_ZERO:
-				puts("Cannot divide by zero");
+				puts("Cannot divide by zero\n");
 				break;
 			case ERR_UNRECOGNIZED_OP:
-				puts("Unrecognized operation");
+				puts("Unrecognized operation\n");
 				break;
 			default:
 				break;
